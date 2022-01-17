@@ -1,45 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import { v4 as uuidv4 } from 'uuid';
+import BookList from './BookList';
+import CreateNewBook from './CreateNewBook';
 import styles from './Books.module.css';
 
-const Books = () => (
-  <div className={styles.main_page}>
-    <ul className={styles.book_section_container}>
-      <li className={styles.book_section}>
-        Sample Book One
-        <br />
-        <br />
-        <button type="button">Remove</button>
-      </li>
-      <li className={styles.book_section}>
-        Sample Book Two
-        <br />
-        <br />
-        <button type="button">Remove</button>
-      </li>
-      <li className={styles.book_section}>
-        Sample Book Three
-        <br />
-        <br />
-        <button type="button">Remove</button>
-      </li>
-    </ul>
+const Books = () => {
+  const [books, addBooks] = useState();
 
-    <h3>ADD NEW BOOK</h3>
-    <form>
-      <label htmlFor="book-input" className="grid-item">
-        <input id="book-input" type="text" placeholder="Book title" />
-      </label>
-      <label htmlFor="book-dropdown" className="grid-item">
-        <select id="book-dropdown">
-          <option value="" disabled selected>Category</option>
-          <option value="action">Action</option>
-          <option value="science-fiction">Science Fiction</option>
-          <option value="economy">Economy</option>
-        </select>
-      </label>
-      <button type="button" className="grid-item">ADD BOOK</button>
-    </form>
-  </div>
-);
+  const addBook = (title, author) => {
+    const newBook = {
+      id: uuidv4(),
+      title,
+      author,
+    };
+    addBooks([...books, newBook]);
+  };
+
+  return (
+    <div className={styles.main_page}>
+      <BookList />
+      <CreateNewBook addBookProps={addBook} />
+    </div>
+  );
+};
 export default Books;
