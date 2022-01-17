@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { PropTypes } from 'prop-types';
 
-const CreateNewBook = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const CreateNewBook = (props) => {
+  const { addBookProps } = props;
+
+  const [inputBook, setInputBook] = useState({
+    title: '',
+  });
+
+  const onChange = (e) => {
+    setInputBook({
+      ...inputBook,
+      [e.target.name]: e.target.value,
+    });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (inputBook.title.trim()) {
+      addBookProps(inputBook.title);
+      setInputBook({
+        title: '',
+      });
+    }
+  };
   return (
     <div>
       <h3>ADD NEW BOOK</h3>
@@ -13,6 +32,10 @@ const CreateNewBook = () => {
           type="text"
           placeholder="Book title"
           className="grid-item"
+          name="title"
+          value={inputBook.title}
+          onChange={onChange}
+          required
         />
         <select className="grid-item">
           <option value="category">Category</option>
@@ -20,12 +43,16 @@ const CreateNewBook = () => {
           <option value="science-fiction">Science Fiction</option>
           <option value="economy">Economy</option>
         </select>
-        <button type="button" className="grid-item">
+        <button type="submit" className="grid-item">
           ADD BOOK
         </button>
       </form>
     </div>
   );
+};
+
+CreateNewBook.propTypes = {
+  addBookProps: PropTypes.func.isRequired,
 };
 
 export default CreateNewBook;
