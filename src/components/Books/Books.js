@@ -33,9 +33,9 @@ const Books = () => (
       <label htmlFor="book-dropdown" className="grid-item">
         <select id="book-dropdown">
           <option value="" disabled selected>Category</option>
-          <option value="lime">Lime</option>
-          <option value="coconut">Coconut</option>
-          <option value="mango">Mango</option>
+          <option value="action">Action</option>
+          <option value="science-fiction">Science Fiction</option>
+          <option value="economy">Economy</option>
         </select>
       </label>
       <button type="button" className="grid-item">ADD BOOK</button>
