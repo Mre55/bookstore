@@ -1,50 +1,48 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { PropTypes } from 'prop-types';
 
 import { v4 as uuidv4 } from 'uuid';
+import { useDispatch, connect } from 'react-redux';
+import { addBook, removeBook } from '../../redux/books/books';
+
 import BookList from './BookList';
 import CreateNewBook from './CreateNewBook';
 import styles from './Books.module.css';
 
-const Books = () => {
-  const initialBooks = [
-    {
-      id: uuidv4(),
-      bookName: 'Sample Book One',
-    },
-    {
-      id: uuidv4(),
-      bookName: 'Sample Book Two',
-    },
-    {
-      id: uuidv4(),
-      bookName: 'Sample Book Three',
-    },
-  ];
+const Books = (props) => {
+  const { books } = props;
 
-  const [books, setBooks] = useState(initialBooks);
+  const dispatch = useDispatch();
 
-  const removeBook = (id) => {
-    setBooks([
-      ...books.filter((book) => book.id !== id),
-    ]);
+  const removeBookFromStore = (id) => {
+    dispatch(removeBook(id));
   };
 
-  const addBook = (title) => {
+  const submitBookToStore = (title) => {
     const newBook = {
       id: uuidv4(),
       bookName: title,
     };
-    setBooks([...books, newBook]);
+    dispatch(addBook(newBook));
   };
 
   return (
     <div className={styles.main_page}>
       <BookList
         books={books}
-        removeBookProps={removeBook}
+        removeBookProps={removeBookFromStore}
       />
-      <CreateNewBook addBookProps={addBook} />
+      <CreateNewBook submitBookToStoreProps={submitBookToStore} />
     </div>
   );
 };
-export default Books;
+
+const mapStateToProps = (state) => ({
+  books: state.booksReducer,
+});
+
+Books.propTypes = {
+  books: PropTypes.instanceOf(Array).isRequired,
+};
+
+export default connect(mapStateToProps)(Books);

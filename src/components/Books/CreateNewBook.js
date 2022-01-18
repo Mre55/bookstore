@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 
 const CreateNewBook = (props) => {
-  const { addBookProps } = props;
+  const { submitBookToStoreProps } = props;
 
   const [inputBook, setInputBook] = useState({
     title: '',
@@ -18,12 +18,13 @@ const CreateNewBook = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputBook.title.trim()) {
-      addBookProps(inputBook.title);
+      submitBookToStoreProps(inputBook.title);
       setInputBook({
         title: '',
       });
     }
   };
+
   return (
     <div>
       <h3>ADD NEW BOOK</h3>
@@ -43,7 +44,10 @@ const CreateNewBook = (props) => {
           <option value="science-fiction">Science Fiction</option>
           <option value="economy">Economy</option>
         </select>
-        <button type="submit" className="grid-item">
+        <button
+          type="submit"
+          className="grid-item"
+        >
           ADD BOOK
         </button>
       </form>
@@ -52,7 +56,7 @@ const CreateNewBook = (props) => {
 };
 
 CreateNewBook.propTypes = {
-  addBookProps: PropTypes.func.isRequired,
+  submitBookToStoreProps: PropTypes.func.isRequired,
 };
 
 export default CreateNewBook;
