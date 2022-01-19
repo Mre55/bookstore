@@ -3,25 +3,23 @@ import { PropTypes } from 'prop-types';
 
 import { v4 as uuidv4 } from 'uuid';
 import { connect, useDispatch } from 'react-redux';
-// import { connect } from 'react-redux';
-// import { addBook, removeBook } from '../../redux/books/booksActions';
 
 import BookList from './BookList';
 import CreateNewBook from './CreateNewBook';
-import { fetchUsers, postBooks, deleteBooks } from '../../redux/books/booksActions';
+import { fetchBooks, addBook, deleteBook } from '../../redux/books/booksActions';
 
 import styles from './Books.module.css';
 
 const Books = (props) => {
-  const { fetchUsers, userData } = props;
+  const { fetchBooks, bookData } = props;
   useEffect(() => {
-    fetchUsers();
+    fetchBooks();
   }, []);
 
   const dispatch = useDispatch();
 
   const removeBookFromStore = (id) => {
-    dispatch(deleteBooks(id));
+    dispatch(deleteBook(id));
   };
 
   const submitBookToStore = (title, category) => {
@@ -30,13 +28,13 @@ const Books = (props) => {
       title,
       category,
     };
-    dispatch(postBooks(newBook));
+    dispatch(addBook(newBook));
   };
 
   return (
     <div className={styles.main_page}>
       <BookList
-        books={userData}
+        books={bookData}
         removeBookProps={removeBookFromStore}
       />
       <CreateNewBook submitBookToStoreProps={submitBookToStore} />
@@ -45,16 +43,16 @@ const Books = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  userData: state.booksReducer.users,
+  bookData: state.booksReducer.books,
 });
 
 const mapDispatch = (dispatch) => ({
-  fetchUsers: () => dispatch(fetchUsers()),
+  fetchBooks: () => dispatch(fetchBooks()),
 });
 
 Books.propTypes = {
-  userData: PropTypes.instanceOf(Object).isRequired,
-  fetchUsers: PropTypes.func.isRequired,
+  bookData: PropTypes.instanceOf(Object).isRequired,
+  fetchBooks: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatch)(Books);
