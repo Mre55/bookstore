@@ -4,9 +4,7 @@ import { PropTypes } from 'prop-types';
 const CreateNewBook = (props) => {
   const { submitBookToStoreProps } = props;
 
-  const [inputBook, setInputBook] = useState({
-    title: '',
-  });
+  const [inputBook, setInputBook] = useState({ title: '' });
 
   const [inputBookCategory, setInputBookCategory] = useState('Category');
 

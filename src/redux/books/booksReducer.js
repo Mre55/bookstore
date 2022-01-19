@@ -6,7 +6,6 @@
 // } from './booksActions';
 
 import {
-  ADD_BOOK,
   FETCH_USERS_REQUEST,
   FETCH_USERS_SUCCESS,
   FETCH_USERS_FAILURE,
@@ -46,11 +45,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_BOOK:
-      return {
-        ...state,
-        users: action.payload,
-      };
     case FETCH_USERS_REQUEST:
       return {
         ...state,

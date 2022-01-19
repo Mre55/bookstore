@@ -8,7 +8,7 @@ import { connect, useDispatch } from 'react-redux';
 
 import BookList from './BookList';
 import CreateNewBook from './CreateNewBook';
-import { fetchUsers, postBooks } from '../../redux/books/booksActions';
+import { fetchUsers, postBooks, deleteBooks } from '../../redux/books/booksActions';
 
 import styles from './Books.module.css';
 
@@ -20,9 +20,9 @@ const Books = (props) => {
 
   const dispatch = useDispatch();
 
-  // const removeBookFromStore = (id) => {
-  //   dispatch(removeBook(id));
-  // };
+  const removeBookFromStore = (id) => {
+    dispatch(deleteBooks(id));
+  };
 
   const submitBookToStore = (title, category) => {
     const newBook = {
@@ -31,27 +31,21 @@ const Books = (props) => {
       category,
     };
     dispatch(postBooks(newBook));
-    // dispatch(postBooks());
   };
 
   return (
     <div className={styles.main_page}>
       <BookList
         books={userData}
-        // removeBookProps={removeBookFromStore}
+        removeBookProps={removeBookFromStore}
       />
       <CreateNewBook submitBookToStoreProps={submitBookToStore} />
     </div>
   );
 };
 
-// const mapStateToProps = (state) => ({
-//   books: state.booksReducer,
-// });
-
 const mapStateToProps = (state) => ({
   userData: state.booksReducer.users,
-  // userDataKeys: state.booksReducer.usersKeys,
 });
 
 const mapDispatch = (dispatch) => ({
@@ -59,7 +53,6 @@ const mapDispatch = (dispatch) => ({
 });
 
 Books.propTypes = {
-  // books: PropTypes.instanceOf(Array).isRequired,
   userData: PropTypes.instanceOf(Object).isRequired,
   fetchUsers: PropTypes.func.isRequired,
 };
