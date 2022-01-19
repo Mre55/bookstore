@@ -8,6 +8,8 @@ const CreateNewBook = (props) => {
     title: '',
   });
 
+  const [inputBookCategory, setInputBookCategory] = useState('Category');
+
   const onChange = (e) => {
     setInputBook({
       ...inputBook,
@@ -18,7 +20,7 @@ const CreateNewBook = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputBook.title.trim()) {
-      submitBookToStoreProps(inputBook.title);
+      submitBookToStoreProps(inputBook.title, inputBookCategory);
       setInputBook({
         title: '',
       });
@@ -38,11 +40,18 @@ const CreateNewBook = (props) => {
           onChange={onChange}
           required
         />
-        <select className="grid-item">
-          <option value="category">Category</option>
-          <option value="action">Action</option>
-          <option value="science-fiction">Science Fiction</option>
-          <option value="economy">Economy</option>
+        <select
+          className="grid-item"
+          value={inputBookCategory}
+          onChange={(e) => {
+            const bookCat = e.target.value;
+            setInputBookCategory(bookCat);
+          }}
+        >
+          <option value="Category">Category</option>
+          <option value="Action">Action</option>
+          <option value="Science Fiction">Science Fiction</option>
+          <option value="Economy">Economy</option>
         </select>
         <button
           type="submit"

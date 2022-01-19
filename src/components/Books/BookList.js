@@ -5,16 +5,17 @@ import BookComponent from './BookComponent';
 import styles from './Books.module.css';
 
 const BookList = (props) => {
-  const { removeBookProps, books } = props;
+  // const { removeBookProps, books } = props;
+  const { books } = props;
 
   return (
     <ul className={styles.book_section_container}>
       {books.map((book) => (
         <BookComponent
-          key={book.id}
-          id={book.id}
+          key={book}
+          // id={book.id}
           book={book}
-          removeBookProps={removeBookProps}
+          // removeBookProps={removeBookProps}
         />
       ))}
     </ul>
@@ -22,8 +23,8 @@ const BookList = (props) => {
 };
 
 BookList.propTypes = {
-  removeBookProps: PropTypes.func.isRequired,
-  books: PropTypes.instanceOf(Array).isRequired,
+  // removeBookProps: PropTypes.func.isRequired,
+  books: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default BookList;
