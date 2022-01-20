@@ -2,11 +2,28 @@
 .navbar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 6.25rem;
+  height: 4.838rem;
+  border: 1px solid #e8e8e8;
 }
 
 .navbar h2 {
+  font-size: 1.875rem;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
   color: #0290ff;
+}
+
+.linkTexts {
+  font-size: 0.813rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
 }
 
 .navbar_list {
@@ -21,4 +38,16 @@
 .navbar_list li a {
   color: #121212;
   text-decoration: none;
+}
+
+.navbarLeft {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.navbarRight {
+  display: flex;
+  justify-content: end;
+  width: 50%;
 }
