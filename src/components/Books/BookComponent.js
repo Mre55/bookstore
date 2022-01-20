@@ -2,6 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 
 import styles from './Books.module.css';
+import status from '../../images/statusProgressNew.png';
 
 const BookComponent = (props) => {
   const { book, removeBookProps, id } = props;
@@ -17,6 +18,10 @@ const BookComponent = (props) => {
           <span>Edit</span>
         </div>
       </div>
+      <div className={styles.statusProgress}>
+        <img src={status} alt="stauts section" width={280} />
+      </div>
+      <span className={styles.statusVerticalLine} />
       <button
         onClick={() => removeBookProps(id)}
         type="button"
