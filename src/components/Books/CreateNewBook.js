@@ -6,7 +6,7 @@ import styles from './Books.module.css';
 const CreateNewBook = (props) => {
   const { submitBookToStoreProps } = props;
 
-  const [inputBook, setInputBook] = useState({ title: '' });
+  const [inputBook, setInputBook] = useState({ title: '', author: '' });
 
   const [inputBookCategory, setInputBookCategory] = useState('Category');
 
@@ -19,10 +19,11 @@ const CreateNewBook = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (inputBook.title.trim()) {
-      submitBookToStoreProps(inputBook.title, inputBookCategory);
+    if (inputBook.title.trim() && inputBook.author.trim()) {
+      submitBookToStoreProps(inputBook.title, inputBook.author, inputBookCategory);
       setInputBook({
         title: '',
+        author: '',
       });
     }
   };
@@ -37,6 +38,15 @@ const CreateNewBook = (props) => {
           className={styles.titleInput}
           name="title"
           value={inputBook.title}
+          onChange={onChange}
+          required
+        />
+        <input
+          type="text"
+          placeholder="Author"
+          className={styles.titleInput}
+          name="author"
+          value={inputBook.author}
           onChange={onChange}
           required
         />

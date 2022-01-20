@@ -22,13 +22,14 @@ const Books = (props) => {
     dispatch(deleteBook(id));
   };
 
-  const submitBookToStore = (title, category) => {
+  const submitBookToStore = (title, author, category) => {
     const newBook = {
       item_id: uuidv4(),
-      title,
+      title: `${title},${author}`,
       category,
     };
     dispatch(addBook(newBook));
+    console.log('add book dispatch ', newBook.title);
   };
 
   return (
