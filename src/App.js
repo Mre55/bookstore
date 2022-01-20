@@ -9,13 +9,11 @@ import Books from './components/Books/Books';
 import Categories from './components/Categories';
 import Navbar from './components/Navbar/Navbar';
 import store from './redux/configureStore';
-// import UserContainer from './components/UserContainer';
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        {/* <UserContainer /> */}
         <Navbar />
         <Routes>
           <Route path="/" element={<Books />} />
