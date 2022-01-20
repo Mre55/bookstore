@@ -2,7 +2,7 @@
 
 This project is Book store website, that allows users to add and remove books using the UI.
 
-<img width="765" alt="Screen Shot 2021-12-08 at 6 16 50 PM" src="https://user-images.githubusercontent.com/34578631/149568923-8c693f85-356e-43c8-bed7-f0f07e0092f1.png">
+<img width="765" alt="Screen Shot 2021-12-08 at 6 16 50 PM" src="https://user-images.githubusercontent.com/34578631/150395395-259de9cc-e0b7-43d2-af0e-a9c3976b23a5.png">
 
 
 ## Built With
