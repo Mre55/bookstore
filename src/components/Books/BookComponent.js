@@ -2,19 +2,32 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 
 import styles from './Books.module.css';
+import status from '../../images/statusProgressNew.png';
 
 const BookComponent = (props) => {
   const { book, removeBookProps, id } = props;
 
   return (
     <li className={styles.book_section}>
-      { book.title }
-      <br />
-      { book.category }
-      <br />
-      <br />
-      <button onClick={() => removeBookProps(id)} type="button">
-        Remove
+      <div className={styles.book_section_left}>
+        <span className={styles.bookCategory}>{ book.category }</span>
+        <span className={styles.bookTitle}>{ book.title }</span>
+        <div className={styles.bookCommentEdit}>
+          <span>Comments</span>
+          <span className={styles.commentVerticalLine} />
+          <span>Edit</span>
+        </div>
+      </div>
+      <div className={styles.statusProgress}>
+        <img src={status} alt="stauts section" width={280} />
+      </div>
+      <span className={styles.statusVerticalLine} />
+      <button
+        onClick={() => removeBookProps(id)}
+        type="button"
+        className={styles.bookRemoveBtn}
+      >
+        <p>REMOVE</p>
       </button>
     </li>
   );

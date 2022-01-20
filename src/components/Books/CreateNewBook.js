@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 
+import styles from './Books.module.css';
+
 const CreateNewBook = (props) => {
   const { submitBookToStoreProps } = props;
 
@@ -26,20 +28,20 @@ const CreateNewBook = (props) => {
   };
 
   return (
-    <div>
+    <div className={styles.formSection}>
       <h3>ADD NEW BOOK</h3>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Book title"
-          className="grid-item"
+          className={styles.titleInput}
           name="title"
           value={inputBook.title}
           onChange={onChange}
           required
         />
         <select
-          className="grid-item"
+          className={styles.inputDropDown}
           value={inputBookCategory}
           onChange={(e) => {
             const bookCat = e.target.value;
@@ -53,9 +55,9 @@ const CreateNewBook = (props) => {
         </select>
         <button
           type="submit"
-          className="grid-item"
+          className={styles.formButton}
         >
-          ADD BOOK
+          <p>ADD BOOK</p>
         </button>
       </form>
     </div>

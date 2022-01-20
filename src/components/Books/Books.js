@@ -37,6 +37,7 @@ const Books = (props) => {
         books={bookData}
         removeBookProps={removeBookFromStore}
       />
+      <div className={styles.line} />
       <CreateNewBook submitBookToStoreProps={submitBookToStore} />
     </div>
   );
