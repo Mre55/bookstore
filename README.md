@@ -47,7 +47,7 @@ You can start using Book store website by cloning the repository.
 
 - GitHub: [@Mre55](https://github.com/Mre55)
 - Twitter: [@MreMisganaw](https://twitter.com/MreMisganaw)
-- LinkedIn: [Mihreteab-Aride]https://www.linkedin.com/in/mihreteabaride/)
+- LinkedIn: [@Mihreteab-Aride](https://www.linkedin.com/in/mihreteabaride/)
 
 ## 🤝 Contributing
 
